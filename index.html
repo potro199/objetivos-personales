@@ -237,9 +237,10 @@ body.locked .wrap{visibility:hidden}
   const SOQL_INFO="SELECT CloseDate, COUNT(Id) cant, SUM(Amount) total FROM Opportunity WHERE StageName = 'Closed Won' AND CloseDate = THIS_MONTH AND Type IN ('Nuevo Personales','Renovación Personales') GROUP BY CloseDate ORDER BY CloseDate";
   // Corte diario: lo reemplaza la tarea programada de las 17:30 (hora Buenos Aires)
   /*DATA-START*/
-  const SNAPSHOT={at:"2026-09-09T14:15:00-03:00",rows:[
+  const SNAPSHOT={at:"2026-09-10T17:38:00-03:00",rows:[
     ["2026-09-01",7,22300000],["2026-09-02",6,16000000],["2026-09-03",4,16350000],["2026-09-04",3,17000000],
-    ["2026-09-07",8,70800000],["2026-09-08",4,19000000],["2026-09-09",9,39470000]
+    ["2026-09-07",8,70800000],["2026-09-08",4,19000000],["2026-09-09",9,39470000],["2026-09-10",4,9500000],
+    ["2026-09-14",1,52000000]
   ]};
   /*DATA-END*/
 
