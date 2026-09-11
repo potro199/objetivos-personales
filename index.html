@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Objetivos Personales</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@87.5,500;87.5,700;87.5,800;100,400;100,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F5F7F4; --surface:#FFFFFF; --ink:#16211E; --ink-2:#4E5B57; --ink-3:#8A958F;
+  --line:#DCE3DE; --line-2:#EDF1EE;
+  --acc:#0E7C66; --acc-soft:#D8EFE8; --acc-ink:#0A5C4C;
+  --o1:#D9A441; --o2:#C4761D; --o3:#9A4512;
+  --ok:#0E7C66; --warn:#B7791F; --bad:#B23A2E;
+  --shadow:0 1px 2px rgba(22,33,30,.06),0 8px 24px -12px rgba(22,33,30,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111816; --surface:#182220; --ink:#E9EEEB; --ink-2:#AEBBB5; --ink-3:#74827C;
+    --line:#2A3632; --line-2:#1F2A27;
+    --acc:#3FB995; --acc-soft:#173B32; --acc-ink:#8FDCC3;
+    --o1:#E3B65B; --o2:#D98A34; --o3:#C0622A;
+    --ok:#3FB995; --warn:#E3B65B; --bad:#E0695B;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111816; --surface:#182220; --ink:#E9EEEB; --ink-2:#AEBBB5; --ink-3:#74827C;
+  --line:#2A3632; --line-2:#1F2A27;
+  --acc:#3FB995; --acc-soft:#173B32; --acc-ink:#8FDCC3;
+  --o1:#E3B65B; --o2:#D98A34; --o3:#C0622A;
+  --ok:#3FB995; --warn:#E3B65B; --bad:#E0695B;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.45;margin:0}
+.num{font-family:"Archivo","Archivo Narrow","Arial Narrow",Arial,sans-serif;font-variation-settings:"wdth" 87.5;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 20px 56px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px 24px;margin-bottom:22px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+h1{font-family:"Archivo",Arial,sans-serif;font-variation-settings:"wdth" 87.5;font-weight:800;font-size:30px;line-height:1.05;margin:4px 0 0;text-wrap:balance}
+h1 span{color:var(--acc)}
+.status{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-2)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ink-3)}
+.dot.live{background:var(--ok);box-shadow:0 0 0 3px var(--acc-soft)}
+.dot.err{background:var(--bad)}
+button{font:inherit;cursor:pointer}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:7px 12px;font-size:13px;font-weight:500}
+.btn:hover{border-color:var(--acc)}
+.btn:focus-visible,.seg button:focus-visible,.chk:focus-within{outline:2px solid var(--acc);outline-offset:2px}
+
+.hero{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:18px}
+.hero>div{background:var(--surface);padding:20px 22px}
+.hero .label{font-size:12px;color:var(--ink-2);font-weight:500;margin-bottom:6px}
+.hero .big{font-size:46px;font-weight:800;line-height:1;color:var(--ink)}
+.hero .big.acc{color:var(--acc)}
+.hero .mid{font-size:32px;font-weight:700;line-height:1.05}
+.hero .sub{font-size:13px;color:var(--ink-3);margin-top:8px}
+.hero .sub b{color:var(--ink-2);font-weight:600}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:18px;overflow:hidden}
+.card-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;padding:14px 22px;border-bottom:1px solid var(--line-2)}
+.card-h h2{font-family:"Archivo",Arial,sans-serif;font-variation-settings:"wdth" 87.5;font-size:16px;font-weight:700;margin:0}
+.card-h .hint{font-size:12.5px;color:var(--ink-3)}
+
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;text-align:left;padding:10px 22px;border-bottom:1px solid var(--line-2)}
+td{padding:14px 22px;border-bottom:1px solid var(--line-2);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+th.r,td.r{text-align:right}
+.obj-name{display:flex;align-items:center;gap:10px;font-weight:600}
+.swatch{width:12px;height:12px;border-radius:3px;flex:none}
+.obj-amt{font-size:20px;font-weight:700}
+.need{font-size:26px;font-weight:800;line-height:1}
+.need small{display:block;font-family:"IBM Plex Sans",sans-serif;font-size:12px;font-weight:400;color:var(--ink-3);margin-top:4px;letter-spacing:0}
+.pct{display:inline-flex;align-items:center;gap:8px}
+.pct .bar{width:110px;height:6px;border-radius:3px;background:var(--line-2);overflow:hidden}
+.pct .bar i{display:block;height:100%;background:var(--acc)}
+.pill{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:999px;background:var(--acc-soft);color:var(--acc-ink)}
+.pill.done{background:var(--acc);color:#fff}
+.table-wrap{overflow-x:auto}
+
+.seg{display:inline-flex;background:var(--line-2);border-radius:9px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--ink-2);border-radius:7px;padding:6px 12px;font-size:13px;font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12);font-weight:600}
+.chart-area{padding:18px 22px 22px}
+.chart-title{font-size:13px;color:var(--ink-2);margin:0 0 12px}
+.chart-title b{color:var(--ink);font-weight:600}
+svg{width:100%;height:auto;display:block;overflow:visible}
+svg text{font-family:"Archivo",Arial,sans-serif;font-variation-settings:"wdth" 87.5;font-variant-numeric:tabular-nums;fill:var(--ink-2)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:12px;font-size:12.5px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+.legend i.box{width:12px;height:12px;border-radius:3px}
+.legend i.dash{background:repeating-linear-gradient(90deg,currentColor 0 4px,transparent 4px 7px)}
+
+.foot{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;font-size:12.5px;color:var(--ink-3);padding:0 4px}
+.chk{display:inline-flex;align-items:center;gap:7px;color:var(--ink-2);cursor:pointer}
+.chk input{accent-color:var(--acc);width:15px;height:15px;margin:0}
+.notice{display:none;margin:0 0 18px;padding:12px 16px;border-radius:10px;background:var(--acc-soft);color:var(--acc-ink);font-size:13.5px}
+.notice.show{display:block}
+.notice.warn{background:#FBF1DA;color:#6E4A0E}
+:root[data-theme="dark"] .notice.warn{background:#3B2E12;color:#F0D08A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .notice.warn{background:#3B2E12;color:#F0D08A}}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr 1fr}
+  .hero>div:first-child{grid-column:1/-1}
+  .hero .big{font-size:40px}
+  .need{font-size:22px}
+  .pct .bar{width:70px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .pct .bar i,.anim{transition:width .6s cubic-bezier(.2,.8,.2,1)}
+}
+
+/* --- acceso --- */
+#gate{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:99;padding:20px}
+#gate form{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:28px 26px;width:100%;max-width:360px}
+#gate h2{font-family:"Archivo",Arial,sans-serif;font-variation-settings:"wdth" 87.5;font-size:20px;margin:6px 0 4px}
+#gate p{margin:0 0 16px;color:var(--ink-2);font-size:13.5px}
+#gate input{width:100%;font:inherit;font-size:18px;letter-spacing:.2em;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);text-align:center}
+#gate input:focus{outline:2px solid var(--acc);border-color:var(--acc)}
+#gate button{margin-top:12px;width:100%;border:0;background:var(--acc);color:#fff;font-weight:600;padding:10px;border-radius:8px}
+#gate .err{color:var(--bad);font-size:13px;margin:10px 0 0;min-height:18px}
+body.locked .wrap{visibility:hidden}
+</style>
+</head>
+<body>
+
+
+<div id="gate">
+  <form id="gateForm" autocomplete="off">
+    <div class="eyebrow">Grupo Puerto</div>
+    <h2>Objetivos Personales</h2>
+    <p>Ingresá la clave para ver la página.</p>
+    <input id="gateKey" type="password" inputmode="numeric" placeholder="••••••" aria-label="Clave" autofocus>
+    <button type="submit">Entrar</button>
+    <p class="err" id="gateErr"></p>
+  </form>
+</div>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">Grupo Puerto · Préstamos Personales</div>
+      <h1>Colocación de <span id="mesNombre">septiembre</span></h1>
+    </div>
+    <div class="status">
+      <span class="dot live"></span>
+      <span>Corte diario 17:30 · último corte <b id="corteTxt" class="num">—</b></span>
+    </div>
+  </header>
+
+  
+  <section class="hero">
+    <div>
+      <div class="label">Close Won Personales · mes en curso</div>
+      <div class="big acc num" id="totalBig">—</div>
+      <div class="sub"><b id="opsCount">—</b> operaciones · promedio <b id="avgOp" class="num">—</b> por operación</div>
+    </div>
+    <div>
+      <div class="label">Días hábiles restantes</div>
+      <div class="mid num" id="diasRest">—</div>
+      <div class="sub">de mañana a fin de mes · <b id="diasTot">—</b> hábiles en el mes</div>
+    </div>
+    <div>
+      <div class="label">Ritmo diario actual</div>
+      <div class="mid num" id="ritmo">—</div>
+      <div class="sub">proyección a fin de mes <b id="proy" class="num">—</b></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-h">
+      <h2>Objetivos del mes</h2>
+      <span class="hint">Promedio diario = (objetivo − colocado) ÷ días hábiles restantes, redondeado hacia arriba al millón</span>
+    </div>
+    <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Objetivo</th><th class="r">Monto</th><th class="r">Falta</th><th class="r">Promedio diario necesario</th><th class="r">Avance</th>
+      </tr></thead>
+      <tbody id="objBody"></tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-h">
+      <h2>Gráfico</h2>
+      <span class="hint">Termómetro del mes</span>
+    </div>
+    <div class="chart-area">
+      <p class="chart-title" id="chartTitle"></p>
+      <div id="chart"></div>
+      <div class="legend" id="legend"></div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <span>Colocado = oportunidades Closed Won de tipo Nuevo / Renovación Personales con fecha de cierre en el mes.</span>
+    <span id="lastSync"></span>
+  </div>
+</div>
+
+<script>
+(function(){
+  const H="80ed5f43910e10f34632b823893b2fb73133107f86bb71dc83ac2321a44ee311";
+  const g=document.getElementById("gate");
+  async function sha(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+  function open(){g.remove();document.body.classList.remove("locked")}
+  document.body.classList.add("locked");
+  try{if(localStorage.getItem("op-key")===H){open();return}}catch(e){}
+  document.getElementById("gateForm").addEventListener("submit",async ev=>{
+    ev.preventDefault();
+    const v=document.getElementById("gateKey").value.trim();
+    if(await sha(v)===H){try{localStorage.setItem("op-key",H)}catch(e){}open()}
+    else{document.getElementById("gateErr").textContent="Clave incorrecta.";document.getElementById("gateKey").select()}
+  });
+})();
+</script>
+<script>
+(function(){
+  // ---------- Config ----------
+  const OBJETIVOS=[
+    {n:"1",v:500000000,c:"var(--o1)"},
+    {n:"2",v:600000000,c:"var(--o2)"},
+    {n:"3",v:700000000,c:"var(--o3)"}
+  ];
+  // Feriados nacionales Argentina (inamovibles + trasladables ya trasladados)
+  const FERIADOS=new Set([
+    "2026-01-01","2026-02-16","2026-02-17","2026-03-24","2026-04-02","2026-04-03","2026-05-01","2026-05-25",
+    "2026-06-15","2026-06-20","2026-07-09","2026-08-17","2026-10-12","2026-11-20","2026-12-08","2026-12-25",
+    "2027-01-01","2027-02-08","2027-02-09","2027-03-24","2027-03-25","2027-03-26","2027-04-02","2027-05-01","2027-05-25",
+    "2027-06-17","2027-06-20","2027-07-09","2027-08-16","2027-10-11","2027-11-20","2027-12-08","2027-12-25"
+  ]);
+  const SOQL_INFO="SELECT CloseDate, COUNT(Id) cant, SUM(Amount) total FROM Opportunity WHERE StageName = 'Closed Won' AND CloseDate = THIS_MONTH AND Type IN ('Nuevo Personales','Renovación Personales') GROUP BY CloseDate ORDER BY CloseDate";
+  // Corte diario: lo reemplaza la tarea programada de las 17:30 (hora Buenos Aires)
+  /*DATA-START*/
+  const SNAPSHOT={at:"2026-09-09T14:15:00-03:00",rows:[
+    ["2026-09-01",7,22300000],["2026-09-02",6,16000000],["2026-09-03",4,16350000],["2026-09-04",3,17000000],
+    ["2026-09-07",8,70800000],["2026-09-08",4,19000000],["2026-09-09",9,39470000]
+  ]};
+  /*DATA-END*/
+
+  // ---------- Helpers ----------
+  const $=s=>document.querySelector(s);
+  const fmt=n=>"$ "+Math.round(n).toLocaleString("es-AR");
+  const fmtM=n=>{const m=n/1e6;return (m>=100?Math.round(m):m>=10?Math.round(m*10)/10:Math.round(m*100)/100).toLocaleString("es-AR")+" M"};
+  const pad=n=>String(n).padStart(2,"0");
+  const iso=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+  function baNow(){ // fecha/hora en Buenos Aires
+    const p=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Argentina/Buenos_Aires",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+    const g=t=>p.find(x=>x.type===t).value;
+    return new Date(+g("year"),+g("month")-1,+g("day"),+g("hour"),+g("minute"));
+  }
+  const esHabil=d=>d.getDay()!==0&&d.getDay()!==6&&!FERIADOS.has(iso(d));
+  function diasHabiles(y,m){const out=[];const d=new Date(y,m,1);while(d.getMonth()===m){if(esHabil(d))out.push(new Date(d));d.setDate(d.getDate()+1)}return out}
+  const MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+
+  // ---------- State ----------
+  const rows=SNAPSHOT.rows.map(r=>({d:r[0],cant:r[1],total:r[2]}));
+  const corte=new Date(SNAPSHOT.at);
+  const variant="A";
+
+  // ---------- Compute ----------
+  function compute(){
+    const now=corte; // el cálculo se hace una vez por día, al corte
+    const y=now.getFullYear(),m=now.getMonth();
+    const habiles=diasHabiles(y,m);
+    const hoy=iso(now);
+    const rest=habiles.filter(d=>iso(d)>hoy).length; // de mañana a fin de mes
+    const pasados=habiles.length-rest;
+    const total=rows.reduce((a,r)=>a+(r.total||0),0);
+    const cant=rows.reduce((a,r)=>a+(r.cant||0),0);
+    const diasConDatos=Math.max(1,habiles.filter(d=>iso(d)<=hoy).length);
+    const ritmo=total/diasConDatos;
+    const proy=total+ritmo*(habiles.length-diasConDatos);
+    const step=1000000;
+    const objs=OBJETIVOS.map(o=>{
+      const falta=Math.max(0,o.v-total);
+      const exact=rest>0?falta/rest:falta;
+      const need=Math.ceil(exact/step)*step;
+      return {...o,falta,exact,need,pct:Math.min(1,total/o.v),done:total>=o.v};
+    });
+    return {now,y,m,habiles,hoy,rest,pasados,total,cant,ritmo,proy,objs,diasConDatos};
+  }
+
+  // ---------- Render ----------
+  function render(){
+    const s=compute();
+    $("#mesNombre").textContent=MESES[s.m];
+    $("#totalBig").textContent=fmt(s.total);
+    $("#opsCount").textContent=s.cant;
+    $("#avgOp").textContent=s.cant?fmt(s.total/s.cant):"—";
+    $("#diasRest").textContent=s.rest;
+    $("#diasTot").textContent=s.habiles.length;
+    $("#corteTxt").textContent=corte.toLocaleString("es-AR",{timeZone:"America/Argentina/Buenos_Aires",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"});
+    $("#ritmo").textContent=fmt(s.ritmo)+"/día";
+    $("#proy").textContent=fmt(s.proy);
+    $("#objBody").innerHTML=s.objs.map(o=>`<tr>
+      <td><span class="obj-name"><i class="swatch" style="background:${o.c}"></i>Objetivo ${o.n}</span></td>
+      <td class="r obj-amt num">${fmt(o.v)}</td>
+      <td class="r num">${o.done?'<span class="pill done">Cumplido</span>':fmt(o.falta)}</td>
+      <td class="r"><span class="need num">${o.done?"—":fmt(o.need)}<small>${o.done?"":"exacto "+fmt(o.exact)+" · "+s.rest+" días hábiles"}</small></span></td>
+      <td class="r"><span class="pct"><span class="bar"><i style="width:${(o.pct*100).toFixed(1)}%"></i></span><span class="num">${Math.round(o.pct*100)} %</span></span></td>
+    </tr>`).join("");
+    ({A:chartA,B:chartB,C:chartC,D:chartD})[variant](s);
+    $("#lastSync").textContent="Datos de Salesforce al "+corte.toLocaleString("es-AR",{timeZone:"America/Argentina/Buenos_Aires",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})+" · próximo corte: siguiente día hábil 17:30";
+  }
+
+  const col=v=>getComputedStyle(document.documentElement).getPropertyValue(v.replace("var(","").replace(")","")).trim();
+  const objColors=()=>OBJETIVOS.map(o=>col(o.c));
+
+  // A · Termómetro (barra horizontal con marcas de objetivo)
+  function chartA(s){
+    const W=900,H=150,L=16,R=16,max=OBJETIVOS[2].v*1.04;
+    const x=v=>L+(W-L-R)*v/max;
+    const cs=objColors();
+    let g=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Colocación del mes contra tres objetivos">`;
+    g+=`<rect x="${L}" y="58" width="${W-L-R}" height="34" rx="6" fill="var(--line-2)"/>`;
+    g+=`<rect class="anim" x="${L}" y="58" width="${Math.max(0,x(s.total)-L)}" height="34" rx="6" fill="var(--acc)"/>`;
+    // proyección a fin de mes (contorno)
+    if(s.proy>s.total) g+=`<rect x="${x(s.total)}" y="58" width="${Math.max(0,x(Math.min(s.proy,max))-x(s.total))}" height="34" fill="var(--acc)" opacity=".18"/>`;
+    s.objs.forEach((o,i)=>{
+      const xx=x(o.v);
+      g+=`<line x1="${xx}" y1="46" x2="${xx}" y2="104" stroke="${cs[i]}" stroke-width="3" stroke-linecap="round"/>`;
+      g+=`<text x="${xx}" y="36" text-anchor="middle" font-size="12" font-weight="700" fill="${cs[i]}">Obj. ${o.n}</text>`;
+      g+=`<text x="${xx}" y="124" text-anchor="middle" font-size="12">${fmtM(o.v)}</text>`;
+      if(!o.done) g+=`<text x="${xx}" y="140" text-anchor="middle" font-size="11" fill="var(--ink-3)">${fmtM(o.need)}/día</text>`;
+    });
+    const tx=x(s.total);
+    g+=`<text x="${Math.min(tx,W-140)}" y="${tx<220?36:36}" text-anchor="${tx<220?'start':'end'}" font-size="15" font-weight="800" fill="var(--acc)">${fmt(s.total)}</text>`;
+    g+=`<text x="${L}" y="124" font-size="12">0</text>`;
+    g+="</svg>";
+    $("#chart").innerHTML=g;
+    $("#chartTitle").innerHTML=`Barra de avance del mes. Relleno sólido: <b>colocado</b>. Sombra clara: <b>proyección</b> al ritmo actual. Marcas: los tres objetivos y el promedio diario que pide cada uno.`;
+    $("#legend").innerHTML=`<span><i class="box" style="background:var(--acc)"></i>Colocado</span><span><i class="box" style="background:var(--acc);opacity:.25"></i>Proyección a fin de mes</span>`+OBJETIVOS.map(o=>`<span><i class="box" style="background:${o.c}"></i>Objetivo ${o.n}</span>`).join("");
+  }
+
+  // B · Escalera (columnas apiladas: alcanzado + faltante por objetivo)
+  function chartB(s){
+    const W=900,H=330,top=54,bot=64,L=70,R=20,max=OBJETIVOS[2].v*1.05;
+    const ph=H-top-bot;const y=v=>top+ph-(ph*v/max);
+    const cs=objColors();const n=s.objs.length;const gw=(W-L-R)/n;const bw=Math.min(150,gw*.5);
+    let g=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Alcanzado y faltante por objetivo">`;
+    for(let t=0;t<=7;t++){const v=t*1e8;g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line-2)"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" font-size="11">${t?fmtM(v):"0"}</text>`}
+    s.objs.forEach((o,i)=>{
+      const cx=L+gw*i+gw/2,x0=cx-bw/2;
+      const got=Math.min(s.total,o.v);
+      g+=`<rect x="${x0}" y="${y(got)}" width="${bw}" height="${y(0)-y(got)}" rx="4" fill="var(--acc)"/>`;
+      if(!o.done){
+        g+=`<rect x="${x0}" y="${y(o.v)}" width="${bw}" height="${y(got)-y(o.v)}" rx="4" fill="${cs[i]}" opacity=".28"/>`;
+        g+=`<rect x="${x0}" y="${y(o.v)}" width="${bw}" height="${y(got)-y(o.v)}" rx="4" fill="none" stroke="${cs[i]}" stroke-width="2" stroke-dasharray="5 4"/>`;
+        g+=`<text x="${cx}" y="${(y(o.v)+y(got))/2-4}" text-anchor="middle" font-size="12" fill="${cs[i]}" font-weight="700">faltan</text>`;
+        g+=`<text x="${cx}" y="${(y(o.v)+y(got))/2+12}" text-anchor="middle" font-size="12" fill="${cs[i]}" font-weight="700">${fmtM(o.falta)}</text>`;
+      }
+      g+=`<text x="${cx}" y="${y(o.v)-24}" text-anchor="middle" font-size="12" font-weight="700" fill="${cs[i]}">Objetivo ${o.n}</text>`;
+      g+=`<text x="${cx}" y="${y(o.v)-9}" text-anchor="middle" font-size="12" fill="var(--ink-3)">${o.done?"cumplido":fmtM(o.need)+" por día"}</text>`;
+      g+=`<text x="${cx}" y="${H-40}" text-anchor="middle" font-size="14" font-weight="800">${fmt(o.v)}</text>`;
+      g+=`<text x="${cx}" y="${H-22}" text-anchor="middle" font-size="11.5">${Math.round(o.pct*100)} % alcanzado</text>`;
+    });
+    g+=`<line x1="${L}" x2="${W-R}" y1="${y(s.total)}" y2="${y(s.total)}" stroke="var(--acc)" stroke-width="1.5" stroke-dasharray="3 4"/>`;
+    g+=`<text x="${W-R}" y="${y(s.total)-6}" text-anchor="end" font-size="12" font-weight="700" fill="var(--acc)">colocado ${fmtM(s.total)}</text>`;
+    g+="</svg>";
+    $("#chart").innerHTML=g;
+    $("#chartTitle").innerHTML=`Una columna por objetivo. La base verde es lo <b>ya colocado</b>; el tramo punteado es lo que <b>falta</b> y arriba, el promedio diario para cubrirlo.`;
+    $("#legend").innerHTML=`<span><i class="box" style="background:var(--acc)"></i>Colocado</span><span><i class="box" style="background:var(--o2);opacity:.35"></i>Faltante</span>`;
+  }
+
+  // C · Ritmo diario (acumulado por día + rectas de ritmo necesario hacia cada objetivo)
+  function chartC(s){
+    const W=900,H=340,top=24,bot=44,L=70,R=110;
+    const days=s.habiles;const n=days.length;
+    const max=OBJETIVOS[2].v*1.05;const ph=H-top-bot;
+    const y=v=>top+ph-(ph*v/max);const x=i=>L+(W-L-R)*i/Math.max(1,n-1);
+    const byDay={};rows.forEach(r=>byDay[r.d]=r);
+    let acc=0;const pts=[];let idxHoy=-1;
+    days.forEach((d,i)=>{const k=iso(d);if(k<=s.hoy){acc+=(byDay[k]?.total||0);pts.push([i,acc,byDay[k]?.total||0]);idxHoy=i}});
+    const cs=objColors();
+    let g=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Acumulado diario y ritmo necesario">`;
+    for(let t=0;t<=7;t++){const v=t*1e8;g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line-2)"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" font-size="11">${t?fmtM(v):"0"}</text>`}
+    // barras diarias
+    const bw=Math.max(4,(W-L-R)/n*.45);
+    pts.forEach(p=>{const v=p[2];if(v>0)g+=`<rect x="${x(p[0])-bw/2}" y="${y(v)}" width="${bw}" height="${y(0)-y(v)}" rx="2" fill="var(--acc)" opacity=".28"/>`});
+    // líneas objetivo (horizontal) + rectas de ritmo desde hoy
+    const startI=idxHoy; // el ritmo arranca desde el corte de hoy
+    s.objs.forEach((o,i)=>{
+      g+=`<line x1="${L}" x2="${W-R}" y1="${y(o.v)}" y2="${y(o.v)}" stroke="${cs[i]}" stroke-width="1.5" stroke-dasharray="2 5" opacity=".7"/>`;
+      g+=`<text x="${W-R+8}" y="${y(o.v)+4}" font-size="12" font-weight="700" fill="${cs[i]}">Obj. ${o.n} ${fmtM(o.v)}</text>`;
+      if(!o.done&&idxHoy>=0&&idxHoy<n-1){
+        const x0=x(startI),y0=y(acc);
+        g+=`<line x1="${x0}" y1="${y0}" x2="${x(n-1)}" y2="${y(o.v)}" stroke="${cs[i]}" stroke-width="2" stroke-dasharray="6 4"/>`;
+        g+=`<text x="${W-R+8}" y="${y(o.v)+18}" font-size="11" fill="var(--ink-3)">${fmtM(o.need)}/día</text>`;
+      }
+    });
+    // acumulado
+    if(pts.length){
+      const path=pts.map((p,i)=>(i?"L":"M")+x(p[0])+" "+y(p[1])).join(" ");
+      g+=`<path d="${path} L${x(pts[pts.length-1][0])} ${y(0)} L${x(0)} ${y(0)} Z" fill="var(--acc)" opacity=".12"/>`;
+      g+=`<path d="${path}" fill="none" stroke="var(--acc)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`;
+      const lp=pts[pts.length-1];
+      g+=`<circle cx="${x(lp[0])}" cy="${y(lp[1])}" r="5.5" fill="var(--acc)" stroke="var(--surface)" stroke-width="2"/>`;
+      g+=`<text x="${x(lp[0])-10}" y="${y(lp[1])-14}" text-anchor="end" font-size="14" font-weight="800" fill="var(--acc)">${fmt(lp[1])}</text>`;
+    }
+    // eje X
+    days.forEach((d,i)=>{if(i%2===0||i===n-1)g+=`<text x="${x(i)}" y="${H-20}" text-anchor="middle" font-size="11">${d.getDate()}</text>`});
+    g+=`<text x="${L}" y="${H-4}" font-size="11" fill="var(--ink-3)">días hábiles de ${MESES[s.m]}</text>`;
+    g+="</svg>";
+    $("#chart").innerHTML=g;
+    $("#chartTitle").innerHTML=`Curva del <b>acumulado</b> día a día (barras claras: colocación de cada día). Las rectas punteadas son el <b>ritmo</b> que hay que sostener desde hoy para llegar a cada objetivo el último día hábil.`;
+    $("#legend").innerHTML=`<span><i style="background:var(--acc)"></i>Acumulado</span><span><i class="box" style="background:var(--acc);opacity:.3"></i>Colocación del día</span>`+OBJETIVOS.map(o=>`<span><i class="dash" style="color:${o.c}"></i>Ritmo a Objetivo ${o.n}</span>`).join("");
+  }
+
+  // D · Medidor (arco semicircular con aguja)
+  function chartD(s){
+    const W=900,H=330,cx=450,cy=280,r=220,thick=34,max=OBJETIVOS[2].v;
+    const ang=v=>Math.PI-Math.PI*Math.min(1,v/max);
+    const P=(a,rr)=>[cx+rr*Math.cos(a),cy-rr*Math.sin(a)];
+    const arc=(v0,v1,rr,tw)=>{const a0=ang(v0),a1=ang(v1);const ro=rr,ri=rr-tw;const [x0,y0]=P(a0,ro),[x1,y1]=P(a1,ro),[x2,y2]=P(a1,ri),[x3,y3]=P(a0,ri);const lg=(a0-a1)>Math.PI?1:0;return `M${x0} ${y0} A${ro} ${ro} 0 ${lg} 1 ${x1} ${y1} L${x2} ${y2} A${ri} ${ri} 0 ${lg} 0 ${x3} ${y3} Z`};
+    const cs=objColors();
+    let g=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Medidor de colocación">`;
+    // fondo por tramos: 0–O1 / O1–O2 / O2–O3
+    const segs=[[0,OBJETIVOS[0].v],[OBJETIVOS[0].v,OBJETIVOS[1].v],[OBJETIVOS[1].v,OBJETIVOS[2].v]];
+    segs.forEach((sg,i)=>{g+=`<path d="${arc(sg[0],sg[1],r,thick)}" fill="${cs[i]}" opacity=".18"/>`});
+    // progreso
+    if(s.total>0)g+=`<path d="${arc(0,Math.min(s.total,max),r,thick)}" fill="var(--acc)"/>`;
+    // proyección
+    if(s.proy>s.total)g+=`<path d="${arc(Math.min(s.total,max),Math.min(s.proy,max),r-thick-6,10)}" fill="var(--acc)" opacity=".35"/>`;
+    // ticks objetivos
+    s.objs.forEach((o,i)=>{const a=ang(o.v);const [x0,y0]=P(a,r+4),[x1,y1]=P(a,r-thick-4);const [lx,ly]=P(a,r+30);
+      g+=`<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}" stroke="${cs[i]}" stroke-width="3" stroke-linecap="round"/>`;
+      const anchor=Math.cos(a)>.2?"start":Math.cos(a)<-.2?"end":"middle";
+      g+=`<text x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="12" font-weight="700" fill="${cs[i]}">${fmtM(o.v)}</text>`;
+      g+=`<text x="${lx}" y="${ly+15}" text-anchor="${anchor}" font-size="11" fill="var(--ink-3)">${o.done?"cumplido":fmtM(o.need)+"/día"}</text>`;
+    });
+    g+=`<text x="${cx-r}" y="${cy+22}" text-anchor="middle" font-size="12">0</text>`;
+    // aguja
+    const a=ang(s.total);const [nx,ny]=P(a,r-thick/2);const [bx,by]=P(a,18);
+    g+=`<line x1="${bx}" y1="${by}" x2="${nx}" y2="${ny}" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="9" fill="var(--ink)"/>`;
+    g+=`<text x="${cx}" y="${cy-70}" text-anchor="middle" font-size="34" font-weight="800" fill="var(--acc)">${fmt(s.total)}</text>`;
+    g+=`<text x="${cx}" y="${cy-46}" text-anchor="middle" font-size="12.5">${Math.round(s.total/OBJETIVOS[0].v*100)} % del Objetivo 1 · ${s.cant} operaciones</text>`;
+    g+="</svg>";
+    $("#chart").innerHTML=g;
+    $("#chartTitle").innerHTML=`Medidor de 0 a ${fmtM(max)}. La aguja marca lo <b>colocado</b>; el arco interior claro, la <b>proyección</b> al ritmo actual. Cada tramo de color es un objetivo.`;
+    $("#legend").innerHTML=`<span><i class="box" style="background:var(--acc)"></i>Colocado</span><span><i class="box" style="background:var(--acc);opacity:.35"></i>Proyección</span>`+OBJETIVOS.map(o=>`<span><i class="box" style="background:${o.c};opacity:.5"></i>Tramo Objetivo ${o.n}</span>`).join("");
+  }
+
+  // ---------- Wire up ----------
+  if(window.matchMedia){window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",render)}
+  new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+
+  render();
+})();
+</script>
+
+</body>
+</html>
