@@ -147,7 +147,7 @@ body.locked .wrap{visibility:hidden}
     </div>
     <div class="status">
       <span class="dot live"></span>
-      <span>Corte diario 17:30 · último corte <b id="corteTxt" class="num">—</b></span>
+      <span>Corte diario 16:30 · último corte <b id="corteTxt" class="num">—</b></span>
     </div>
   </header>
 
@@ -235,7 +235,7 @@ body.locked .wrap{visibility:hidden}
     "2027-06-17","2027-06-20","2027-07-09","2027-08-16","2027-10-11","2027-11-20","2027-12-08","2027-12-25"
   ]);
   const SOQL_INFO="SELECT CloseDate, COUNT(Id) cant, SUM(Amount) total FROM Opportunity WHERE StageName = 'Closed Won' AND CloseDate = THIS_MONTH AND Type IN ('Nuevo Personales','Renovación Personales') GROUP BY CloseDate ORDER BY CloseDate";
-  // Corte diario: lo reemplaza la tarea programada de las 17:30 (hora Buenos Aires)
+  // Corte diario: lo reemplaza la tarea programada de las 16:30 (hora Buenos Aires)
   /*DATA-START*/
   const SNAPSHOT={at:"2026-09-15T08:59:00-03:00",rows:[
     ["2026-09-01",7,22300000],
@@ -314,7 +314,7 @@ body.locked .wrap{visibility:hidden}
       <td class="r"><span class="pct"><span class="bar"><i style="width:${(o.pct*100).toFixed(1)}%"></i></span><span class="num">${Math.round(o.pct*100)} %</span></span></td>
     </tr>`).join("");
     ({A:chartA,B:chartB,C:chartC,D:chartD})[variant](s);
-    $("#lastSync").textContent="Datos de Salesforce al "+corte.toLocaleString("es-AR",{timeZone:"America/Argentina/Buenos_Aires",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})+" · próximo corte: siguiente día hábil 17:30";
+    $("#lastSync").textContent="Datos de Salesforce al "+corte.toLocaleString("es-AR",{timeZone:"America/Argentina/Buenos_Aires",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"})+" · próximo corte: siguiente día hábil 16:30";
   }
 
   const col=v=>getComputedStyle(document.documentElement).getPropertyValue(v.replace("var(","").replace(")","")).trim();
